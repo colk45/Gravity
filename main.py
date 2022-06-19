@@ -1,13 +1,12 @@
 import pygame, sys, random
-from Particles import Particles
+from Particles import Particles, particles
 
 pygame.init()
 
-# ventana
-SCREEN_SIZE = (1000, 1000)
+SCREEN_SIZE = (1000, 500)
 screen = pygame.display.set_mode(SCREEN_SIZE)
 LIGHT_GREY = pygame.Color('grey12')
-# FPS       
+
 clock = pygame.time.Clock()
 FPS = 60
 
@@ -27,7 +26,10 @@ while True:
 
     screen.fill(LIGHT_GREY)
 
-    particle.run()
+    particle.draw()
+
+    for particle_i in particles:
+        particle_i.update()
 
     pygame.display.update()
     clock.tick(FPS)
