@@ -1,36 +1,48 @@
-import pygame, sys, random
-from Particles import Particles, particles
+import pygame, sys
+from pygame.math import Vector2 as Vector
+from Planet import Planet, planets
 
-pygame.init()
-
-SCREEN_SIZE = (1000, 500)
-screen = pygame.display.set_mode(SCREEN_SIZE)
-LIGHT_GREY = pygame.Color('grey12')
+last_mouse_pos = Vector(0, 0)
+first_mouse_pos = Vector(0, 0)
 
 clock = pygame.time.Clock()
 FPS = 60
 
-particle = Particles((0, 0), 0)
+pygame.init()
+
+WIDTH, HEIGH = 0, 0
+screen = pygame.display.set_mode((WIDTH, HEIGH), pygame.FULLSCREEN)
+WIDTH, HEIGH  = screen.get_size()
+
+LIGHT_GREY = pygame.Color('grey12')
+
+planet = Planet((0, 0), 0)
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()   
+
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-            particle.create()
+            planet.create()
+            if len(planets) > 0: 
+                planets[-1].velocity = Vector(mouse_velocity_x, mouse_velocity_y) / 4
 
     screen.fill(LIGHT_GREY)
 
-    particle.draw()
+    mouse_velocity_x, mouse_velocity_y = pygame.mouse.get_rel()
 
-    for particle_i in particles:
-        particle_i.update()
+    # planet physics
+    for planet_i in planets:
+        planet_i.update()
+        
+    planet.draw()
 
     pygame.display.update()
     clock.tick(FPS)
-        
