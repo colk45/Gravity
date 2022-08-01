@@ -1,4 +1,4 @@
-# gravity
+# Gravity
 THIS IS A PROJECT BASED ON GRAVITY'S LAWS
 
       --------------------GAME PHYSICS AND CONTROLS---------------------
