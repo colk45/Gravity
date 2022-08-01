@@ -11,6 +11,6 @@ THIS IS A PROJECT BASED ON GRAVITY'S LAWS
 I HAVE A FIRST VERSION OF THIS PROJECT, I WILL UPDATE THIS PROJECT 
 
 
-           --------------------v1.0.0--------------------------
+       -------------------------v1.0.0--------------------------
            OPEN THE TERMINAL AND OPEN THE DIRECTORY WHERE THERE IS main.py AND WRITE python3 main.py, IF
            THIS IS NOT WORK TRY WITH py main.py
